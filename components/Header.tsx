@@ -1,6 +1,8 @@
 /** @jsxImportSource theme-ui */
 import { useEffect, useState, useCallback } from 'react'
-import { Button, Flex, Heading, Box } from '@theme-ui/components'
+import Link from 'next/link'
+import { Button, Flex, Box } from '@theme-ui/components'
+import { Link as ThemeUILink } from '@theme-ui/components'
 
 export default function Header() {
     const [y, setY] = useState(typeof window === 'undefined' ? 0 : window.scrollY)
@@ -55,12 +57,14 @@ export default function Header() {
             >
                 <Button
                     style={{
-                        padding: '1rem 1.5rem',
+                        padding: '.8rem 1.2rem',
                     }}
                 >
                     اتصال حساب
                 </Button>
-                <Heading as="h2">بلاگ</Heading>
+                <Link href="/" passHref>
+                    <ThemeUILink sx={{ fontSize: 4 }}>بلاگ</ThemeUILink>
+                </Link>
             </Flex>
         </Box>
     )

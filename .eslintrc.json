@@ -3,6 +3,18 @@
     "rules": {
         "prefer-const": "error",
         "no-var": "error",
-        "func-names": "off"
+        "func-names": "off",
+        "import/no-anonymous-default-export": [
+            "off",
+            {
+                "allowArray": false,
+                "allowArrowFunction": false,
+                "allowAnonymousClass": false,
+                "allowAnonymousFunction": false,
+                "allowCallExpression": true, // The true value here is for backward compatibility
+                "allowLiteral": false,
+                "allowObject": false
+            }
+        ]
     }
 }

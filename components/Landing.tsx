@@ -80,7 +80,7 @@ export default function Landing() {
                 را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این
                 صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد
             </Text>
-            <a href="https://twitter.com">
+            <a target="_blank" rel="noreferrer" href="https://twitter.com">
                 <Text
                     sx={{
                         color: 'muted',

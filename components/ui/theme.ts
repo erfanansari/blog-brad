@@ -1,4 +1,6 @@
 import type { Theme } from 'theme-ui'
+// font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+// Droid Sans, Helvetica Neue, sans-serif; */
 
 export const theme: Theme = {
     fonts: {
@@ -61,25 +63,35 @@ export const theme: Theme = {
             borderColor: 'muted',
         },
     },
+    links: {
+        primary: {
+            color: 'red',
+        },
+        nav: {
+            textDecoration: 'none',
+        },
+    },
     buttons: {
         primary: {
+            fontFamily: 'body',
             color: 'background',
             bg: 'primary',
             transition: 'all .2s ease',
             '&:hover': {
-                boxShadow: '0 0 0 0.25rem #16F',
+                boxShadow: '0 0 0 0.22rem #16F',
                 background: '#16F',
                 // color: 'pink',
             },
             cursor: 'pointer',
         },
         secondary: {
+            fontFamily: 'body',
             color: 'background',
             bg: 'secondary',
             transition: 'all .2s ease',
 
             '&:hover': {
-                boxShadow: '0 0 0 0.25rem #CCE4FF',
+                boxShadow: '0 0 0 0.22rem #CCE4FF',
                 background: '#CCE4FF',
                 // color: 'pink',
             },
@@ -92,7 +104,11 @@ export const theme: Theme = {
         root: {
             fontFamily: 'body',
             fontWeight: 'body',
-            // boxSizing: 'border-box',
+        },
+        a: {
+            color: 'black',
+            fontSize: 3,
+            textDecoration: 'none',
         },
         h1: {
             variant: 'text.heading',

@@ -1,4 +1,3 @@
-// /** @jsxImportSource theme-ui */
 import type { NextPage } from 'next'
 import Layout from '$components/Layout'
 import Landing from '$components/Landing'

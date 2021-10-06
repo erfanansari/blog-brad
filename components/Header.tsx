@@ -13,7 +13,7 @@ export default function Header() {
             if (y > window.scrollY) {
                 setScrollingDown(false)
                 // console.log('scrolling up', y)
-            } else if (y < window.scrollY) {
+            } else if (y <= window.scrollY) {
                 setScrollingDown(true)
                 // console.log('scrolling down', y)
             }
@@ -55,13 +55,15 @@ export default function Header() {
                     transform: `translate(0,${scrollingDown ? -100 : 0}px)`,
                 }}
             >
-                <Button
-                    style={{
-                        padding: '.8rem 1.2rem',
-                    }}
-                >
-                    اتصال حساب
-                </Button>
+                <Link href="/about" passHref>
+                    <Button
+                        style={{
+                            padding: '.8rem 1.2rem',
+                        }}
+                    >
+                        اتصال حساب
+                    </Button>
+                </Link>
                 <Link href="/" passHref>
                     <ThemeUILink sx={{ fontSize: 4 }}>بلاگ</ThemeUILink>
                 </Link>

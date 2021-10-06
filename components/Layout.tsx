@@ -20,7 +20,7 @@ const Layout: FC<Props> = (props) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <main>{children}</main>
+            <main style={{ minHeight: 'calc(100vh - 124px)', marginTop: '76px' }}>{children}</main>
             {/*<Footer/>*/}
         </div>
     )

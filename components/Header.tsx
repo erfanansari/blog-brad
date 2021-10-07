@@ -55,7 +55,7 @@ export default function Header() {
                     transform: `translate(0,${scrollingDown ? -100 : 0}px)`,
                 }}
             >
-                <Link href="/about" passHref>
+                <Link href="/dashboard" passHref>
                     <Button
                         style={{
                             padding: '.8rem 1.2rem',

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Text, Flex, Box } from '@theme-ui/components'
+import { Text, Flex } from '@theme-ui/components'
 import { PropsWithChildren, useState } from 'react'
 import { IoChevronBackOutline } from 'react-icons/io5'
 

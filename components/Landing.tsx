@@ -98,7 +98,7 @@ export default function Landing() {
                             <Text as="p" sx={{ fontWeight: 'heading' }}>
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استیک است.
                             </Text>
-                            <Text as="p" sx={{ color: 'highlight' }}>
+                            <Text as="p" sx={{ color: '#666' }}>
                                 نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در
                             </Text>
                         </Flex>

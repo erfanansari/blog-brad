@@ -30,7 +30,8 @@ export const theme: Theme = {
         primary: '#16F',
         secondary: '#fFA',
         accent: '#CCE4FF',
-        highlight: '#999',
+        error: '#FF453A',
+        highlight: 'rgba(0, 0, 0, 0.080)',
         muted: '#444',
         modes: {
             dark: {
@@ -71,6 +72,47 @@ export const theme: Theme = {
             textDecoration: 'none',
         },
     },
+    forms: {
+        label: {
+            fontSize: 4,
+            fontWeight: 'bold',
+            mb: 2,
+        },
+        input: {
+            borderColor: 'rgba(0, 0, 0, 0.10)',
+            borderRadius: 12,
+            // fontFamily: 'body',
+            padding: '1.2rem',
+            height: '3.5rem',
+            borderWidth: 2,
+            // width: '100%',
+            fontSize: 2,
+            '&:focus': {
+                borderColor: 'black',
+                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.080)',
+                outline: 'none',
+            },
+        },
+        select: {
+            borderColor: 'gray',
+            '&:focus': {
+                borderColor: 'primary',
+                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.080)',
+                outline: 'none',
+            },
+        },
+        textarea: {
+            borderColor: 'gray',
+            '&:focus': {
+                borderColor: 'primary',
+                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.080)',
+                outline: 'none',
+            },
+        },
+        slider: {
+            bg: 'muted',
+        },
+    },
     buttons: {
         primary: {
             fontFamily: 'body',
@@ -104,6 +146,9 @@ export const theme: Theme = {
         root: {
             fontFamily: 'body',
             fontWeight: 'body',
+        },
+        input: {
+            background: 'red',
         },
         a: {
             color: 'black',

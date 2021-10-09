@@ -34,7 +34,7 @@ export default function Dashboard() {
             </Text>
             {/* </Box> */}
             <Flex sx={{ width: '100%', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
-                <Block label="نام کاربری" href="/user">
+                <Block label="نام کاربری" href="/dashboard/profile">
                     <IoPersonCircleOutline size={40} />
                 </Block>
             </Flex>

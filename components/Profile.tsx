@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { useState, ChangeEvent } from 'react'
 import Image from 'next/image'
+import DashboardLayout from './DashboardLayout'
 import Label from './Label'
 import { Flex, Label as ThemeUILabel, Input, Box, Heading, Text, Button } from '@theme-ui/components'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -30,24 +31,12 @@ export default function Profile() {
             }
         }
         if (e.target.files && e.target.files[0]) reader.readAsDataURL(e.target.files[0])
-        // if (e && e.target.files[0]) reader.readAsDataURL(e.target.files[0])
     }
 
     const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
     return (
-        <Flex
-            sx={{
-                padding: [0, '2rem', null, '4rem'],
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                margin: 'auto',
-                textAlign: 'right',
-            }}
-        >
-            <Heading as="h1" sx={{ fontSize: 6, mb: 4, fontWeight: 'bold' }}>
-                داشبورد
-            </Heading>
+        <DashboardLayout title="داشبورد">
             <Box
                 onSubmit={handleSubmit(onSubmit)}
                 as="form"
@@ -110,7 +99,7 @@ export default function Profile() {
                     {image ? (
                         <Image src={image} alt="user" width={100} height={100} />
                     ) : (
-                        <IoPersonCircleOutline size={100} color="rgba(0, 0, 0, 0.70)" />
+                        <IoPersonCircleOutline size={100} color="rgba(0, 0, 0, 0.65)" />
                     )}
                 </ThemeUILabel>
 
@@ -130,6 +119,6 @@ export default function Profile() {
                     ثبت تنظیمات پروفایل
                 </Button>
             </Box>
-        </Flex>
+        </DashboardLayout>
     )
 }

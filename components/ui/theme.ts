@@ -31,7 +31,7 @@ export const theme: Theme = {
         secondary: '#fFA',
         accent: '#CCE4FF',
         error: '#FF453A',
-        highlight: 'rgba(0, 0, 0, 0.080)',
+        highlight: 'rgba(0, 0, 0, 0.070)',
         muted: '#444',
         modes: {
             dark: {
@@ -50,9 +50,11 @@ export const theme: Theme = {
     },
     cards: {
         primary: {
-            padding: 2,
+            padding: '1rem 2rem',
+            m: 1,
             borderRadius: 15,
             border: '2px solid transparent',
+            transition: 'border-color .2s ease',
             '&:hover': {
                 border: '2px solid  #ccc',
             },
@@ -89,7 +91,7 @@ export const theme: Theme = {
             fontSize: 2,
             '&:focus': {
                 borderColor: 'black',
-                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.080)',
+                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.070)',
                 outline: 'none',
             },
         },
@@ -97,7 +99,7 @@ export const theme: Theme = {
             borderColor: 'gray',
             '&:focus': {
                 borderColor: 'primary',
-                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.080)',
+                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.070)',
                 outline: 'none',
             },
         },
@@ -105,7 +107,7 @@ export const theme: Theme = {
             borderColor: 'gray',
             '&:focus': {
                 borderColor: 'primary',
-                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.080)',
+                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.070)',
                 outline: 'none',
             },
         },

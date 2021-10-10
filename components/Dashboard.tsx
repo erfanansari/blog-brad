@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 // import { useEffect, useState, useCallback } from 'react'
-import Block from '$components/Block'
+import Block from '$components/ui/Block'
 // import Link from 'next/link'
 import { Flex } from '@theme-ui/components'
 import { Heading, Text } from '@theme-ui/components'
@@ -45,7 +45,7 @@ export default function Dashboard() {
                 <Block label="ویرایش" href="/edit">
                     <IoPencilOutline size={40} />
                 </Block>
-                <Block label="راهنما" href="/guid">
+                <Block label="راهنما" href="/dashboard/guide">
                     <IoBookOutline size={40} />
                 </Block>
 

@@ -1,4 +1,5 @@
 import { Label as ThemeUILabel, Text } from '@theme-ui/components'
+
 interface Props {
     title: string
     badge?: string

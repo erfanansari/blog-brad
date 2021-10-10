@@ -4,6 +4,7 @@
         "prefer-const": "error",
         "no-var": "error",
         "func-names": "off",
+        "import/newline-after-import": ["error"],
         "import/no-anonymous-default-export": [
             "off",
             {

@@ -1,5 +1,4 @@
 import Layout from '$components/Layout'
-
 import { Flex, Heading, Text } from '@theme-ui/components'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -19,9 +18,8 @@ export default function NotFoundPage() {
     return (
         <Layout>
             <Flex sx={{ alignItems: 'center', padding: 4, fontSize: '1.5rem', flexDirection: 'column' }}>
-                <Heading>Whoops! looks like something went wrong</Heading>
-                {/*  eslint-disable-next-line react/no-unescaped-entities */}
-                <Text>You'll be redirected in {count} seconds.</Text>
+                <Heading>صفحه مورد نظر پیدا نشد 404</Heading>
+                <Text>تا {count} ثانیه دیگر ریدایرکت میشوید</Text>
             </Flex>
         </Layout>
     )

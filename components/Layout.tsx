@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import type { FC } from 'react'
 import Header from '$components/Header'
+import { Flex } from 'theme-ui'
 // import Footer from "$components/Footer";
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 const Layout: FC<Props> = (props) => {
     const { title, keywords, description, children } = props
     return (
-        <div style={{ padding: '1.5rem' }}>
+        <Flex sx={{ py: 3, px: '6rem', justifyContent: 'center' }}>
             <Head>
                 <title>{title}</title>
                 <meta name="keywords" content={keywords} />
@@ -20,9 +21,9 @@ const Layout: FC<Props> = (props) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-            <main style={{ minHeight: 'calc(100vh - 124px)', marginTop: '76px' }}>{children}</main>
+            <main style={{ minWidth: '80%', marginLeft: '1rem' }}>{children}</main>
             {/*<Footer/>*/}
-        </div>
+        </Flex>
     )
 }
 

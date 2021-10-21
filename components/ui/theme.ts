@@ -4,8 +4,8 @@ import type { Theme } from 'theme-ui'
 
 export const theme: Theme = {
     fonts: {
-        body: 'Vazir, system-ui, sans-serif',
-        heading: 'Vazir, "Avenir Next", sans-serif',
+        body: 'Inter, system-ui, sans-serif',
+        heading: 'Inter, "Avenir Next", sans-serif',
         monospace: 'Input, Fira Code, Menlo, monospace',
     },
     fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
@@ -68,7 +68,7 @@ export const theme: Theme = {
     },
     links: {
         primary: {
-            color: 'red',
+            color: '#333333',
         },
         nav: {
             textDecoration: 'none',
@@ -153,8 +153,7 @@ export const theme: Theme = {
             background: 'red',
         },
         a: {
-            color: 'black',
-            fontSize: 3,
+            color: '#333333',
             textDecoration: 'none',
         },
         h1: {
@@ -204,6 +203,9 @@ export const theme: Theme = {
         td: {
             textAlign: 'left',
             borderBottomStyle: 'solid',
+        },
+        hr: {
+            color: '#bbb',
         },
     },
 }

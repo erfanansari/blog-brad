@@ -1,4 +1,6 @@
-import '@fontsource/vazir'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/700.css'
 import '@fontsource/fira-code'
 
 import { Global } from '@emotion/react'
@@ -10,7 +12,7 @@ const GlobalStyles = () => (
                 boxSizing: 'border-box',
             },
             body: {
-                fontFamily: 'Vazir, sans-serif',
+                fontFamily: 'Inter, sans-serif',
             },
         })}
     />

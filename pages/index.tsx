@@ -1,13 +1,22 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Layout from '$components/Layout'
-import Landing from '$components/Landing'
+import Feed from '$components/Feed'
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ blogs }: any) => {
     return (
         <Layout title={'بلاگ'}>
-            <Landing />
+            <Feed blogs={blogs} />
         </Layout>
     )
 }
 
 export default Home
+
+export const getStaticProps: GetStaticProps = async () => {
+    const res = await fetch(`http://localhost:1337/articles`)
+    const blogs = await res.json()
+
+    return {
+        props: { blogs },
+    }
+}

@@ -82,16 +82,16 @@ export const theme: Theme = {
         },
         input: {
             borderColor: 'rgba(0, 0, 0, 0.10)',
-            borderRadius: 12,
+            borderRadius: 7,
             // fontFamily: 'body',
             padding: '1.2rem',
-            height: '3.5rem',
+            height: '3rem',
             borderWidth: 2,
             // width: '100%',
             fontSize: 2,
             '&:focus': {
-                borderColor: 'black',
-                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.070)',
+                // borderColor: 'black',
+                // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.11)',
                 outline: 'none',
             },
         },
@@ -118,27 +118,26 @@ export const theme: Theme = {
     buttons: {
         primary: {
             fontFamily: 'body',
-            color: 'background',
-            bg: 'primary',
-            transition: 'all .2s ease',
-            '&:hover': {
-                boxShadow: '0 0 0 0.22rem #16F',
-                background: '#16F',
-                // color: 'pink',
-            },
+            // color: 'background',
+            // bg: 'primary',
+            // transition: 'all .2s ease',
+            // '&:hover': {
+            //     boxShadow: '0 0 0 0.22rem #16F',
+            //     background: '#16F',
+            // },
             cursor: 'pointer',
         },
         secondary: {
             fontFamily: 'body',
-            color: 'background',
-            bg: 'secondary',
-            transition: 'all .2s ease',
+            // color: 'background',
+            // bg: 'secondary',
+            // transition: 'all .2s ease',
 
-            '&:hover': {
-                boxShadow: '0 0 0 0.22rem #CCE4FF',
-                background: '#CCE4FF',
-                // color: 'pink',
-            },
+            // '&:hover': {
+            //     boxShadow: '0 0 0 0.22rem #CCE4FF',
+            //     background: '#CCE4FF',
+            // color: 'pink',
+            // },
             cursor: 'pointer',
         },
     },

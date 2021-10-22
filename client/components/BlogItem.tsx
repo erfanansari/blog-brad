@@ -26,7 +26,12 @@ export default function BlogItem({ blog }: Props) {
                         width={40}
                         height={40}
                     />
-                    <Flex sx={{ flexDirection: 'column', ml: 3 }}>
+                    <Flex
+                        sx={{
+                            flexDirection: 'column',
+                            ml: 3,
+                        }}
+                    >
                         <Link href="/autor" sx={{ fontWeight: 'bold', color: '#454545' }}>
                             {blog.author.name}
                         </Link>
@@ -35,6 +40,7 @@ export default function BlogItem({ blog }: Props) {
                 </Flex>
                 <Flex
                     sx={{
+                        flexDirection: ['column', null, 'row'],
                         justifyContent: 'space-between',
                         // maxWidth: '80%',
                         img: { borderRadius: '4px' },
@@ -44,15 +50,23 @@ export default function BlogItem({ blog }: Props) {
                         <Link href={`/${blog.slug}`} sx={{ fontSize: 4, fontWeight: 'bold' }}>
                             {blog.title}
                         </Link>
-                        <Text sx={{ maxWidth: '90%' }}>{blog.description}</Text>
+                        <Text sx={{ maxWidth: '90%', my: [2, null, 0] }}>{blog.description}</Text>
                     </Flex>
 
-                    <Box sx={{ minWidth: '250px', justifyContent: 'space-between' }}>
+                    <Box
+                        sx={{
+                            minWidth: '250px',
+                            maxWidth: [null, null, '200px'],
+                            maxHeight: [null, null, '125px'],
+                            justifyContent: 'space-between',
+                            my: [2, null, 0],
+                        }}
+                    >
                         <Image
                             src={blog.image.formats.medium.url}
                             alt={blog.image.name}
-                            width={250}
-                            height={120}
+                            width={blog.image.width}
+                            height={2000}
                         />
                     </Box>
                 </Flex>

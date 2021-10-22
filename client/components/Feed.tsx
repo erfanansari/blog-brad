@@ -17,15 +17,15 @@ export default function Feed({ blogs }: any) {
                     justifyContent: 'space-between',
                 }}
             >
-                <Heading sx={{ color: 'muted' }} as="h3">
+                <Heading sx={{ color: 'muted', display: ['none', null, 'block'] }} as="h3">
                     My feed
                 </Heading>
                 <Flex
                     sx={{
                         a: {
-                            mx: 3,
+                            mx: [1, 2, 3],
                             color: 'muted',
-                            fontSize: 2,
+                            fontSize: [1, 2],
                         },
                     }}
                 >

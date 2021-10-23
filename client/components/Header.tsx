@@ -1,9 +1,20 @@
-import { useEffect, useState, useCallback } from 'react'
-import { Button, Flex, Box, Heading } from '@theme-ui/components'
-import { IoMenu, IoNotificationsCircleOutline, IoPersonCircleOutline, IoSunnyOutline } from 'react-icons/io5'
+import { useState } from 'react'
+import { Button, Flex, Box, Divider } from '@theme-ui/components'
+import { AnimatePresence, motion } from 'framer-motion'
+import {
+    IoMenu,
+    IoClose,
+    IoNotificationsCircleOutline,
+    IoPersonCircleOutline,
+    IoSunnyOutline,
+    IoPricetagOutline,
+    IoCompassOutline,
+    IoBookmarkOutline,
+    IoSearchOutline,
+    IoNewspaperOutline,
+} from 'react-icons/io5'
 import Link from '$ui/Link'
 
-const links = ['Explore', 'Tags', 'Bookmarks', 'Search']
 const Title = ({ pb }: { pb?: number }) => (
     <Link href="/" sx={{ fontWeight: 'bold', fontSize: 4, pb }}>
         hashnode
@@ -11,17 +22,51 @@ const Title = ({ pb }: { pb?: number }) => (
 )
 const Links = () => (
     <>
-        <Link href="/write" sx={{ fontWeight: 'bold' }}>
+        <Link
+            href="/write"
+            sx={{
+                fontWeight: 'bold',
+                pb: 2,
+            }}
+        >
             <Button>WRITE</Button>
         </Link>
-        <Link href="/" sx={{ py: 2 }}>
-            My feed
-        </Link>
-        {links.map((link) => (
-            <Link key={link} href={'/' + link.toLowerCase()} sx={{ py: 2 }}>
-                {link}
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                a: {
+                    py: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    svg: {
+                        mr: 2,
+                    },
+                },
+            }}
+        >
+            <Divider />
+            <Link href="/">
+                <IoNewspaperOutline size={25} />
+                My feed
             </Link>
-        ))}
+            <Link href="/explore">
+                <IoCompassOutline size={25} />
+                Explore
+            </Link>
+            <Link href="/tags">
+                <IoPricetagOutline size={25} />
+                Tags
+            </Link>
+            <Link href="/tags">
+                <IoBookmarkOutline size={25} />
+                Bookmarks
+            </Link>
+            <Link href="/search">
+                <IoSearchOutline size={25} />
+                Search
+            </Link>
+        </Box>
     </>
 )
 
@@ -29,10 +74,16 @@ export default function Header() {
     const [open, setOpen] = useState(false)
     return (
         <>
-            <Box sx={{ flexDirection: 'column', minWidth: '12%', display: ['none', null, 'flex'] }}>
+            <Box
+                sx={{
+                    flexDirection: 'column',
+                    minWidth: '12%',
+                    display: ['none', null, 'flex'],
+                }}
+            >
                 <Title pb={3} />
                 <Links />
-                <hr style={{ margin: '2rem 0', width: '100%' }} />
+                <Divider />
             </Box>
             <Flex
                 sx={{
@@ -54,33 +105,67 @@ export default function Header() {
                         onClick={() => setOpen(!open)}
                         sx={{ mr: 2, p: 0, bg: 'transparent', color: 'black' }}
                     >
-                        <IoMenu size={30} />
+                        {open ? (
+                            <motion.div
+                                animate={{
+                                    rotateZ: '-90deg',
+                                }}
+                            >
+                                <IoClose size={30} />
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                animate={{
+                                    rotateZ: 0,
+                                }}
+                            >
+                                <IoMenu size={30} />
+                            </motion.div>
+                        )}
                     </Button>
                     <Title />
                 </Flex>
                 <Box>
-                    <IoSunnyOutline size={30} style={{ marginRight: '0.5rem' }} />
-                    <IoNotificationsCircleOutline size={30} style={{ marginRight: '0.5rem' }} />
+                    <IoSunnyOutline
+                        size={30}
+                        style={{ marginRight: '0.5rem' }}
+                    />
+                    <IoNotificationsCircleOutline
+                        size={30}
+                        style={{ marginRight: '0.5rem' }}
+                    />
                     <IoPersonCircleOutline size={30} />
                 </Box>
             </Flex>
-            {open && (
-                <Flex
-                    sx={{
-                        bg: 'white',
-                        position: 'fixed',
-                        flexDirection: 'column',
-                        top: '3.2rem',
-                        zIndex: 1,
-                        py: 2,
-                        px: 4,
-                        borderRadius: 5,
-                        width: '50%',
-                    }}
-                >
-                    <Links />
-                </Flex>
-            )}
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        style={{
+                            background: 'white',
+                            position: 'fixed',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            top: '3.2rem',
+                            zIndex: 1,
+                            padding: '1rem 2rem',
+                            borderRadius: 5,
+                            width: '60%',
+                            border: '1px solid #ddd',
+                        }}
+                        animate={{
+                            opacity: 1,
+                        }}
+                        initial={{
+                            opacity: 0,
+                        }}
+                        exit={{
+                            opacity: 0,
+                        }}
+                    >
+                        <Links />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     )
 }

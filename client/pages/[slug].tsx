@@ -2,11 +2,8 @@ import type { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import Layout from '$components/Layout'
 import Blog from '$components/Blog'
 import { assertIsTypedArray, isBlog } from 'types'
-import { Text } from '@theme-ui/components'
 
 const BlogPage: NextPage = ({ blog }: any) => {
-    console.log(blog)
-
     return (
         <Layout title={'بلاگ'}>
             <Blog blog={blog} />

@@ -1,11 +1,11 @@
-import { Flex, Box, Button, Heading, Text } from '@theme-ui/components'
+import { Flex, Box, Heading } from '@theme-ui/components'
 import Link from '$ui/Link'
 import BlogItem from './BlogItem'
 import { assertIsTypedArray, isBlog } from 'types'
 
 export default function Feed({ blogs }: any) {
-    assertIsTypedArray(blogs, isBlog)
-    blogs.map((el) => {})
+assertIsTypedArray(blogs, isBlog)
+
 
     return (
         <Box>
@@ -17,7 +17,10 @@ export default function Feed({ blogs }: any) {
                     justifyContent: 'space-between',
                 }}
             >
-                <Heading sx={{ color: 'muted', display: ['none', null, 'block'] }} as="h3">
+                <Heading
+                    sx={{ color: 'muted', display: ['none', null, 'block'] }}
+                    as="h3"
+                >
                     My feed
                 </Heading>
                 <Flex

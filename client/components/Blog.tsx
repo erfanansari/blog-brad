@@ -1,7 +1,8 @@
-import { Box, Flex, Heading, Text, Divider } from '@theme-ui/components'
+import { Flex, Heading, Text, Divider } from '@theme-ui/components'
 import { Blog as BlogType } from '../types'
 import Image from 'next/image'
 import { dateFormater } from 'utils/helper-functions'
+import defaultImg from 'assets/default.png'
 import Link from './ui/Link'
 
 interface Props {
@@ -23,8 +24,21 @@ export default function Blog({ blog }: Props) {
                 },
             }}
         >
-            <Image src={blog.image.formats.medium.url} width={700} height={500} alt={blog.image.name} />
-            <Heading as="h1" sx={{ alignSelf: 'flex-start', fontWeight: 'bold', py: 4, fontSize: '2.5rem' }}>
+            <Image
+                src={blog.image ? blog.image.formats.medium.url : defaultImg}
+                width={700}
+                height={500}
+                alt={blog.image ? blog.image.name : 'blog'}
+            />
+            <Heading
+                as="h1"
+                sx={{
+                    alignSelf: 'flex-start',
+                    fontWeight: 'bold',
+                    py: 4,
+                    fontSize: ['1.5rem', '2.5rem'],
+                }}
+            >
                 {blog.title}
             </Heading>
             <Divider sx={{ mb: '1.6rem' }} />
@@ -39,22 +53,39 @@ export default function Blog({ blog }: Props) {
                 }}
             >
                 <Image
-                    src={blog.author.picture.formats.small.url}
-                    alt={blog.image.name}
+                    src={
+                        blog.author
+                            ? blog.author.picture.formats.small.url
+                            : defaultImg
+                    }
+                    alt={blog.image ? blog.image.name : 'author'}
                     width={55}
                     height={55}
                 />
                 <Flex sx={{ flexDirection: 'column', ml: 3 }}>
-                    <Link href="/autor" sx={{ fontWeight: 'bold', color: '#454545' }}>
-                        {blog.author.name}
+                    <Link
+                        href="/autor"
+                        sx={{ fontWeight: 'bold', color: '#454545' }}
+                    >
+                        {blog.author ? blog.author.name : 'author'}
                     </Link>
-                    <Text sx={{ fontSize: 1, fontWeight: 500, color: '#656565' }}>
-                        <Text sx={{ fontSize: 1, color: '#888', fontWeight: 'normal' }}>Published On </Text>
+                    <Text
+                        sx={{ fontSize: 1, fontWeight: 500, color: '#656565' }}
+                    >
+                        <Text
+                            sx={{
+                                fontSize: 1,
+                                color: '#888',
+                                fontWeight: 'normal',
+                            }}
+                        >
+                            Published On{' '}
+                        </Text>
                         {dateFormater(blog.published_at)}
                     </Text>
                 </Flex>
             </Flex>
-            <Divider sx={{ my: 3 }} />
+            <Divider sx={{ mt: '1.2rem', mb: '2rem' }} />
             <Text as="p">{blog.content}</Text>
         </Flex>
     )

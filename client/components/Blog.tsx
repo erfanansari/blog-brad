@@ -1,15 +1,26 @@
-import { Flex, Heading, Text, Divider } from '@theme-ui/components'
+import { Flex, Heading, Text, Divider, Button } from '@theme-ui/components'
 import { Blog as BlogType } from '../types'
 import Image from 'next/image'
 import { dateFormater } from 'utils/helper-functions'
 import defaultImg from 'assets/default.png'
 import Link from './ui/Link'
+import router from 'next/router'
 
 interface Props {
     blog: BlogType
 }
 export default function Blog({ blog }: Props) {
-    console.log(blog)
+    const removeBlog = async () => {
+        const res = await fetch(`http://localhost:1337/articles/${blog.id}`, {
+            method: 'DELETE',
+        })
+        const data = await res.json()
+        if (!res.ok) {
+            alert(data.message)
+        } else {
+            router.push('/')
+        }
+    }
 
     return (
         <Flex
@@ -87,6 +98,7 @@ export default function Blog({ blog }: Props) {
             </Flex>
             <Divider sx={{ mt: '1.2rem', mb: '2rem' }} />
             <Text as="p">{blog.content}</Text>
+            <Button onClick={removeBlog}>Delete</Button>
         </Flex>
     )
 }

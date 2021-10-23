@@ -10,6 +10,7 @@ interface Props {
 export default function Search({ blogs }: Props) {
     const [term, setTerm] = useState('')
     const router = useRouter()
+    const queryTerm = router.query.term
     const handleSubmit = (e: FormEvent<HTMLDivElement>) => {
         e.preventDefault()
         router.push(`/search?term=${term}`)
@@ -22,10 +23,14 @@ export default function Search({ blogs }: Props) {
                 sx={{ flexDirection: 'column' }}
                 onSubmit={handleSubmit}
             >
-                <Input value={term} onChange={(e) => setTerm(e.target.value)} />
-                {blogs.length === 0 && (
+                <Input
+                    placeholder="Search hashnode"
+                    value={term}
+                    onChange={(e) => setTerm(e.target.value)}
+                />
+                {blogs.length === 0 && queryTerm && (
                     <Heading as="h2" sx={{ p: 6 }}>
-                        No Blogs to show
+                        No results were found for {queryTerm}
                     </Heading>
                 )}
                 {blogs.map((blog) => (

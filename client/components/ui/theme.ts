@@ -50,11 +50,11 @@ export const theme: Theme = {
     },
     cards: {
         primary: {
-            padding: '1rem 2rem',
-            m: 1,
-            borderRadius: 15,
-            border: '2px solid transparent',
-            transition: 'border-color .2s ease',
+            'padding': '1rem 2rem',
+            'm': 1,
+            'borderRadius': 15,
+            'border': '2px solid transparent',
+            'transition': 'border-color .2s ease',
             '&:hover': {
                 border: '2px solid  #ccc',
             },
@@ -81,14 +81,14 @@ export const theme: Theme = {
             mb: 2,
         },
         input: {
-            borderColor: 'rgba(0, 0, 0, 0.10)',
-            borderRadius: 7,
+            'borderColor': 'rgba(0, 0, 0, 0.10)',
+            'borderRadius': 7,
             // fontFamily: 'body',
-            padding: '1.2rem',
-            height: '3rem',
-            borderWidth: 2,
+            'padding': '1.2rem',
+            'height': '3rem',
+            'borderWidth': 2,
             // width: '100%',
-            fontSize: 2,
+            'fontSize': 2,
             '&:focus': {
                 // borderColor: 'black',
                 // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.11)',
@@ -96,7 +96,7 @@ export const theme: Theme = {
             },
         },
         select: {
-            borderColor: 'gray',
+            'borderColor': 'gray',
             '&:focus': {
                 borderColor: 'primary',
                 // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.070)',
@@ -104,7 +104,8 @@ export const theme: Theme = {
             },
         },
         textarea: {
-            borderColor: 'gray',
+            'borderColor': 'gray',
+            'fontFamily': 'body',
             '&:focus': {
                 borderColor: 'primary',
                 // boxShadow: '0 0 0 0.25rem rgba(0, 0, 0 , 0.070)',

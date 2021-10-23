@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Box, Flex, Text } from '@theme-ui/components'
+import { Box, Button, Flex, Text } from '@theme-ui/components'
 import { dateFormater } from 'utils/helper-functions'
 import defaultImg from 'assets/default.png'
 import Link from './ui/Link'

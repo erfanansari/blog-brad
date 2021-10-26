@@ -1,5 +1,5 @@
-import { Box, Input, Textarea } from '@theme-ui/components'
-import { GetServerSideProps } from 'next'
+import { Box, Button, Heading, Input, Textarea } from '@theme-ui/components'
+import Image from 'next/image'
 import router from 'next/router'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Blog } from 'types'
@@ -75,6 +75,17 @@ export default function Edit({ blog }: { blog: Blog }) {
                 }}
                 {...register('content')}
             />
+            {blog.image ? (
+                <Image
+                    src={blog.image.formats.medium.url}
+                    alt={blog.image.name}
+                    width={250}
+                    height={250}
+                />
+            ) : (
+                <Heading as="h3">No image to show</Heading>
+            )}
+            <Button>set Image</Button>
         </Box>
     )
 }

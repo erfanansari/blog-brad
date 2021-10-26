@@ -99,6 +99,7 @@ export default function Blog({ blog }: Props) {
             <Divider sx={{ mt: '1.2rem', mb: '2rem' }} />
             <Text as="p">{blog.content}</Text>
             <Button onClick={removeBlog}>Delete</Button>
+            <Link href={`/edit/${blog.slug}`}>Edit</Link>
         </Flex>
     )
 }

@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "dj-events-backend",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -13,7 +13,6 @@
   "dependencies": {
     "knex": "0.21.18",
     "mime-types": "^2.1.27",
-    "slugify": "^1.6.1",
     "sqlite3": "5.0.0",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
@@ -32,7 +31,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "76d5cb8c-200f-499c-9548-1d3400af2ce5",
+    "uuid": "d83f0e6f-a10e-48e4-9555-4cd5f8d1eee2",
     "template": "https://github.com/strapi/strapi-template-blog"
   },
   "engines": {

@@ -85,7 +85,7 @@ export default function BlogItem({ blog }: Props) {
                     <Image
                         src={
                             blog.image
-                                ? blog.image.formats.medium.url
+                                ? blog.image.formats.small.url
                                 : defaultImg
                         }
                         alt={blog.image ? blog.image.name : 'author'}

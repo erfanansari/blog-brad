@@ -14,9 +14,9 @@ const EditPage: NextPage<{ blog: Blog }> = ({ blog }) => {
 export default EditPage
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    console.log(params!.slug)
-
-    const res = await fetch(`http://localhost:1337/articles/${params!.slug}`)
+    const res = await fetch(
+        ` ${process.env.NEXT_PUBLIC_API_URL}/blogs/${params!.id}`,
+    )
     const blog = await res.json()
     return {
         props: { blog },

@@ -28,7 +28,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     })
     let blogs = []
     if (query) {
-        const res = await fetch(`http://localhost:1337/articles?${query}`)
+        const res = await fetch(
+            ` ${process.env.NEXT_PULBIC_API_URL}/blogs?${query}`,
+        )
         blogs = await res.json()
     }
     return {

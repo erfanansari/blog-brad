@@ -11,9 +11,12 @@ interface Props {
 }
 export default function Blog({ blog }: Props) {
     const removeBlog = async () => {
-        const res = await fetch(`http://localhost:1337/articles/${blog.id}`, {
-            method: 'DELETE',
-        })
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/blogs/${blog.id}`,
+            {
+                method: 'DELETE',
+            },
+        )
         const data = await res.json()
         if (!res.ok) {
             alert(data.message)
@@ -99,7 +102,7 @@ export default function Blog({ blog }: Props) {
             <Divider sx={{ mt: '1.2rem', mb: '2rem' }} />
             <Text as="p">{blog.content}</Text>
             <Button onClick={removeBlog}>Delete</Button>
-            <Link href={`/edit/${blog.slug}`}>Edit</Link>
+            <Link href={`/edit/${blog.id}`}>Edit</Link>
         </Flex>
     )
 }

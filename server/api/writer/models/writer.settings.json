@@ -21,10 +21,6 @@
       "plugin": "upload",
       "required": false
     },
-    "articles": {
-      "via": "author",
-      "collection": "article"
-    },
     "email": {
       "type": "string"
     }

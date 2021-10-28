@@ -4,9 +4,7 @@ import BlogItem from './BlogItem'
 import { assertIsTypedArray, isBlog } from 'types'
 
 export default function Feed({ blogs }: any) {
-assertIsTypedArray(blogs, isBlog)
-
-
+    assertIsTypedArray(blogs, isBlog)
     return (
         <Box>
             <Flex

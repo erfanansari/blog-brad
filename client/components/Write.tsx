@@ -16,7 +16,7 @@ export default function Write() {
     } = useForm<Inputs>()
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        const res = await fetch('http://localhost:1337/articles', {
+        const res = await fetch(' ${process.env.NEXT_PUBLIC_API_URL}/blogs', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

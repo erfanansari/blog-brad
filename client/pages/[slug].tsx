@@ -14,7 +14,7 @@ const BlogPage: NextPage = ({ blog }: any) => {
 export default BlogPage
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const res = await fetch(`http://localhost:1337/articles`)
+    const res = await fetch(`  ${process.env.NEXT_PUBLIC_API_URL}/blogs`)
     const blogs = await res.json()
     assertIsTypedArray(blogs, isBlog)
     const paths = blogs.map(({ slug }) => ({ params: { slug } }))
@@ -26,7 +26,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const slug = params?.slug
-    const res = await fetch(`http://localhost:1337/articles?slug=${slug}`)
+    const res = await fetch(
+        `  ${process.env.NEXT_PUBLIC_API_URL}/blogs?slug=${slug}`,
+    )
     const blogs = await res.json()
 
     return {

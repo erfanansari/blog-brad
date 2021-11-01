@@ -1,12 +1,15 @@
-import { Flex, Box, Heading } from '@theme-ui/components'
+import { Flex, Box, Heading, Grid } from '@theme-ui/components'
 import Link from '$ui/Link'
 import BlogItem from './BlogItem'
 import { assertIsTypedArray, isBlog } from 'types'
 
-export default function Feed({ blogs }: any) {
+export default function Feed({ blogs, page, total }: any) {
     assertIsTypedArray(blogs, isBlog)
+    const perPage = +process.env.NEXT_PUBLIC_PER_PAGE!
+    const lastPage = Math.ceil(total / perPage)
+
     return (
-        <Box>
+        <>
             <Flex
                 sx={{
                     border: '1px solid rgba(0, 0, 0, 0.15)',
@@ -30,19 +33,28 @@ export default function Feed({ blogs }: any) {
                         },
                     }}
                 >
-                    <Link href="/realvent">Realevent</Link>
-                    <Link href="/featured">Featured</Link>
-                    <Link href="/recent">Recent</Link>
+                    <Link href="/">Featured</Link>
+                    <Link href="/">Recent</Link>
                 </Flex>
             </Flex>
-            {blogs.length === 0 && (
-                <Heading as="h2" sx={{ p: 6 }}>
-                    No Blogs to show
-                </Heading>
-            )}
-            {blogs.map((blog) => (
-                <BlogItem key={blog.id} blog={blog} />
-            ))}
-        </Box>
+            <Grid
+                sx={{
+                    rowGap: [null, 0, '3rem'],
+                }}
+            >
+                {blogs.length === 0 && (
+                    <Heading as="h2" sx={{ p: 6 }}>
+                        No Blogs to show
+                    </Heading>
+                )}
+                {blogs.map((blog) => (
+                    <BlogItem key={blog.id} blog={blog} />
+                ))}
+                {page > 1 && <Link href={`?page=${page - 1}`}>prev</Link>}
+                {page < lastPage && (
+                    <Link href={`?page=${page + 1}`}>next</Link>
+                )}
+            </Grid>
+        </>
     )
 }

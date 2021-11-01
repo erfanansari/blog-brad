@@ -5,7 +5,7 @@ import qs from 'qs'
 
 const Home: NextPage = ({ blogs }: any) => {
     return (
-        <Layout title={'درباره'}>
+        <Layout title={'Search | Hashnode'}>
             <Search blogs={blogs} />
         </Layout>
     )
@@ -22,14 +22,13 @@ export const getServerSideProps: GetServerSideProps = async ({
                 { title_contains: term },
                 { description_contains: term },
                 { 'author.name_contains': term },
-                { 'category.name_contains': term },
             ],
         },
     })
     let blogs = []
     if (query) {
         const res = await fetch(
-            ` ${process.env.NEXT_PULBIC_API_URL}/blogs?${query}`,
+            `${process.env.API_URL || 'http://localhost:1337'}/blogs?${query}`,
         )
         blogs = await res.json()
     }

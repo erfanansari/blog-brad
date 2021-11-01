@@ -2,9 +2,9 @@ import { Flex, Heading, Text, Divider, Button } from '@theme-ui/components'
 import { Blog as BlogType } from '../types'
 import Image from 'next/image'
 import { dateFormater } from 'utils/helper-functions'
-import defaultImg from 'assets/default.png'
 import Link from './ui/Link'
 import router from 'next/router'
+import { IoPersonCircleOutline } from 'react-icons/io5'
 
 interface Props {
     blog: BlogType
@@ -25,6 +25,7 @@ export default function Blog({ blog }: Props) {
         }
     }
 
+    const { image } = blog
     return (
         <Flex
             sx={{
@@ -38,12 +39,18 @@ export default function Blog({ blog }: Props) {
                 },
             }}
         >
-            <Image
-                src={blog.image ? blog.image.formats.medium.url : defaultImg}
-                width={700}
-                height={500}
-                alt={blog.image ? blog.image.name : 'blog'}
-            />
+            {image && (
+                <Image
+                    src={
+                        image.formats.medium
+                            ? image.formats.medium.url
+                            : image.formats.small.url
+                    }
+                    width={700}
+                    height={500}
+                    alt={blog.image ? blog.image.name : 'blog'}
+                />
+            )}
             <Heading
                 as="h1"
                 sx={{
@@ -56,7 +63,6 @@ export default function Blog({ blog }: Props) {
                 {blog.title}
             </Heading>
             <Divider sx={{ mb: '1.6rem' }} />
-            {/* <Heading as="h2">{blog.content}</Heading> */}
             <Flex
                 sx={{
                     alignItems: 'center',
@@ -66,16 +72,16 @@ export default function Blog({ blog }: Props) {
                     mb: 2,
                 }}
             >
-                <Image
-                    src={
-                        blog.author
-                            ? blog.author.picture.formats.small.url
-                            : defaultImg
-                    }
-                    alt={blog.image ? blog.image.name : 'author'}
-                    width={55}
-                    height={55}
-                />
+                {blog.author ? (
+                    <Image
+                        src={blog.author.picture.formats.small.url}
+                        alt={blog.image ? blog.image.name : 'blog'}
+                        width={40}
+                        height={40}
+                    />
+                ) : (
+                    <IoPersonCircleOutline size={35} />
+                )}
                 <Flex sx={{ flexDirection: 'column', ml: 3 }}>
                     <Link
                         href="/autor"

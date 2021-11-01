@@ -12,11 +12,12 @@ import {
     IoBookmarkOutline,
     IoSearchOutline,
     IoNewspaperOutline,
+    IoPencilSharp,
 } from 'react-icons/io5'
 import Link from '$ui/Link'
 
 const Title = ({ pb }: { pb?: number }) => (
-    <Link href="/" sx={{ fontWeight: 'bold', fontSize: 4, pb }}>
+    <Link href="/" sx={{ fontWeight: 'bold', fontSize: 5, pb }}>
         hashnode
     </Link>
 )
@@ -29,14 +30,24 @@ const Links = () => (
                 pb: 2,
             }}
         >
-            <Button>WRITE</Button>
+            <Button
+                sx={{
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+            >
+                <IoPencilSharp style={{ marginRight: '.3rem' }} size={25} />
+                WRITE
+            </Button>
         </Link>
         <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 a: {
-                    py: 2,
+                    py: '.6rem',
                     display: 'flex',
                     alignItems: 'center',
                     svg: {
@@ -77,13 +88,12 @@ export default function Header() {
             <Box
                 sx={{
                     flexDirection: 'column',
-                    minWidth: '12%',
+                    // minWidth: '12%',
                     display: ['none', null, 'flex'],
                 }}
             >
                 <Title pb={3} />
                 <Links />
-                <Divider />
             </Box>
             <Flex
                 sx={{

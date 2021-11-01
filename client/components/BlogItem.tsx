@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import { Box, Button, Flex, Text } from '@theme-ui/components'
 import { dateFormater } from 'utils/helper-functions'
-import defaultImg from 'assets/default.png'
 import Link from './ui/Link'
 import { Blog } from 'types'
+import { IoPersonCircleOutline } from 'react-icons/io5'
+import router from 'next/router'
 
 interface Props {
     blog: Blog
@@ -21,16 +22,16 @@ export default function BlogItem({ blog }: Props) {
                     mb: 2,
                 }}
             >
-                <Image
-                    src={
-                        blog.author
-                            ? blog.author.picture.formats.small.url
-                            : defaultImg
-                    }
-                    alt={blog.image ? blog.image.name : 'blog'}
-                    width={40}
-                    height={40}
-                />
+                {blog.author ? (
+                    <Image
+                        src={blog.author.picture.formats.small.url}
+                        alt={blog.image ? blog.image.name : 'blog'}
+                        width={40}
+                        height={40}
+                    />
+                ) : (
+                    <IoPersonCircleOutline size={30} />
+                )}
                 <Flex
                     sx={{
                         flexDirection: 'column',
@@ -80,18 +81,18 @@ export default function BlogItem({ blog }: Props) {
                         maxHeight: [null, null, '125px'],
                         justifyContent: 'space-between',
                         my: [2, null, 0],
+                        cursor: 'pointer',
                     }}
+                    onClick={() => router.push(`/${blog.slug}`)}
                 >
-                    <Image
-                        src={
-                            blog.image
-                                ? blog.image.formats.small.url
-                                : defaultImg
-                        }
-                        alt={blog.image ? blog.image.name : 'author'}
-                        width={blog.image ? blog.image.width : 2000}
-                        height={1700}
-                    />
+                    {blog.image?.formats.small && (
+                        <Image
+                            src={blog.image.formats.small.url}
+                            alt={blog.image ? blog.image.name : 'author'}
+                            width={blog.image ? blog.image.width : 450}
+                            height={blog.image ? blog.image.height : 450}
+                        />
+                    )}
                 </Box>
             </Flex>
         </Flex>

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import type { FC } from 'react'
 import Header from '$components/Header'
-import { Flex, Box } from 'theme-ui'
+import { Grid, Box } from 'theme-ui'
 // import Footer from "$components/Footer";
 
 interface Props {
@@ -13,12 +13,15 @@ interface Props {
 const Layout: FC<Props> = (props) => {
     const { title, keywords, description, children } = props
     return (
-        <Flex
+        <Grid
+            columns={[null, null, '1fr 4fr', '1.15fr 6fr', '1.05fr 6fr']}
             sx={{
                 py: 3,
-                px: ['1rem', '2rem', '3rem', '5rem'],
-                flexDirection: ['column', null, 'row'],
-                justifyContent: 'center',
+                px: ['1rem', '2rem', '3rem', '5.5rem'],
+                // flexDirection: ['column', null, 'row'],
+                // justifyContent: 'center',
+                columnGap: '2rem',
+                gridAutoRows: '10px',
             }}
         >
             <Head>
@@ -30,7 +33,6 @@ const Layout: FC<Props> = (props) => {
             <Header />
             {/* <main
                 style={{
-                    minWidth: '80%',
                     marginTop: '3rem',
                 }}
             >
@@ -38,20 +40,22 @@ const Layout: FC<Props> = (props) => {
             </main> */}
             <Box
                 as="main"
+                role="main"
                 sx={{
-                    minWidth: '80%',
-                    mt: '3rem',
+                    // minWidth: '80%',
+                    mt: ['3rem', null, 0],
+                    // ml: [0, null, '3rem'],
                 }}
             >
                 {children}
             </Box>
             {/*<Footer/>*/}
-        </Flex>
+        </Grid>
     )
 }
 
 Layout.defaultProps = {
-    title: 'بلاگ',
+    title: 'Hashnode',
     keywords: 'development,coding,programming',
     description: 'the best info and news in development',
 }

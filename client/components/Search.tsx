@@ -28,11 +28,16 @@ export default function Search({ blogs }: Props) {
                     value={term}
                     onChange={(e) => setTerm(e.target.value)}
                 />
-                {blogs.length === 0 && queryTerm && (
-                    <Heading as="h2" sx={{ p: 6 }}>
-                        No results were found for {queryTerm}
-                    </Heading>
-                )}
+                {queryTerm &&
+                    (blogs.length === 0 ? (
+                        <Heading as="h2" sx={{ p: 4 }}>
+                            No results were found for {queryTerm}
+                        </Heading>
+                    ) : (
+                        <Heading as="h2" sx={{ mt: 3 }}>
+                            Results for {queryTerm}
+                        </Heading>
+                    ))}
                 {blogs.map((blog) => (
                     <BlogItem key={blog.id} blog={blog} />
                 ))}

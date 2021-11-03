@@ -1,12 +1,11 @@
-import { Flex, Box, Heading, Grid } from '@theme-ui/components'
+import { Flex, Heading, Grid } from '@theme-ui/components'
 import Link from '$ui/Link'
 import BlogItem from './BlogItem'
+import Pagination from './ui/Pagination'
 import { assertIsTypedArray, isBlog } from 'types'
 
 export default function Feed({ blogs, page, total }: any) {
     assertIsTypedArray(blogs, isBlog)
-    const perPage = +process.env.NEXT_PUBLIC_PER_PAGE!
-    const lastPage = Math.ceil(total / perPage)
 
     return (
         <>
@@ -40,6 +39,7 @@ export default function Feed({ blogs, page, total }: any) {
             <Grid
                 sx={{
                     rowGap: [null, 0, '3rem'],
+                    minHeight: 'calc(100vh - 4.5rem)',
                 }}
             >
                 {blogs.length === 0 && (
@@ -50,10 +50,7 @@ export default function Feed({ blogs, page, total }: any) {
                 {blogs.map((blog) => (
                     <BlogItem key={blog.id} blog={blog} />
                 ))}
-                {page > 1 && <Link href={`?page=${page - 1}`}>prev</Link>}
-                {page < lastPage && (
-                    <Link href={`?page=${page + 1}`}>next</Link>
-                )}
+                <Pagination page={page} total={total} />
             </Grid>
         </>
     )

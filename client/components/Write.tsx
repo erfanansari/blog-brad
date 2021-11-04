@@ -1,6 +1,6 @@
 import { Box, Input, Textarea } from '@theme-ui/components'
 import router from 'next/router'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 type Inputs = {

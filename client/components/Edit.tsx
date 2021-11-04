@@ -36,7 +36,7 @@ export default function Edit({ blog }: { blog: Blog }) {
     }
 
     const uploadImage = async (
-        e: MouseEvent<HTMLButtonElement, MouseEvent>,
+        e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
     ) => {
         e.preventDefault()
         if (!image.file) return
@@ -44,7 +44,7 @@ export default function Edit({ blog }: { blog: Blog }) {
 
         const formData = new FormData()
         formData.append('files', image.file)
-        formData.append('refId', blog.id)
+        formData.append('refId', blog.id.toString())
         formData.append('ref', 'blogs')
         formData.append('field', 'image')
 
@@ -86,6 +86,7 @@ export default function Edit({ blog }: { blog: Blog }) {
             router.push(`/${newBlog.slug}`)
         }
     }
+
     return (
         <Box
             as="form"
@@ -119,12 +120,16 @@ export default function Edit({ blog }: { blog: Blog }) {
                 }}
                 {...register('content')}
             />
-            {blog.image || image.path ? (
+            {blog.image?.formats?.medium || image.path ? (
                 <Image
                     src={
-                        image.path ? image.path : blog.image.formats.medium.url
+                        image.path
+                            ? image.path
+                            : blog.image?.formats.medium
+                            ? blog.image?.formats.medium.url
+                            : blog.image!.formats.small.url
                     }
-                    alt={blog.image ? blog.image.name : 'image'}
+                    alt={blog.image ? blog.image.name : 'No image'}
                     width={250}
                     height={250}
                 />

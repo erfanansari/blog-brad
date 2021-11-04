@@ -39,7 +39,7 @@ export default function Blog({ blog }: Props) {
                 },
             }}
         >
-            {image && (
+            {image?.formats && (
                 <Image
                     src={
                         image.formats.medium

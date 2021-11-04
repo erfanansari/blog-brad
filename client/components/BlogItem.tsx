@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Box, Button, Flex, Text } from '@theme-ui/components'
+import { Box, Flex, Text } from '@theme-ui/components'
 import { dateFormater } from 'utils/helper-functions'
 import Link from './ui/Link'
 import { Blog } from 'types'
@@ -85,12 +85,23 @@ export default function BlogItem({ blog }: Props) {
                     }}
                     onClick={() => router.push(`/${blog.slug}`)}
                 >
-                    {blog.image?.formats.small && (
+                    {blog.image?.formats && (
                         <Image
-                            src={blog.image.formats.small.url}
+                            src={
+                                blog.image.formats.medium
+                                    ? blog.image.formats.medium.url
+                                    : blog.image.formats.small.url
+                            }
                             alt={blog.image ? blog.image.name : 'author'}
-                            width={blog.image ? blog.image.width : 450}
-                            height={blog.image ? blog.image.height : 450}
+                            layout="intrinsic"
+                            width={350}
+                            height={350}
+                            // width={blog.image && blog.image.width  < 500? blog.image.width : 450}
+                            // height={
+                            //     blog.image && blog.image.height < 500
+                            //         ? blog.image.height
+                            //         : 550
+                            // }
                         />
                     )}
                 </Box>

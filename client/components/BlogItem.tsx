@@ -93,9 +93,9 @@ export default function BlogItem({ blog }: Props) {
                                     : blog.image.formats.small.url
                             }
                             alt={blog.image ? blog.image.name : 'author'}
-                            layout="intrinsic"
-                            width={350}
-                            height={350}
+                            layout="responsive"
+                            width={250}
+                            height={150}
                             // width={blog.image && blog.image.width  < 500? blog.image.width : 450}
                             // height={
                             //     blog.image && blog.image.height < 500

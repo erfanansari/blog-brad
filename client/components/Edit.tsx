@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, MouseEvent } from 'react'
-import { Box, Button, Heading, Input, Textarea } from '@theme-ui/components'
+import { Box, Label, Heading, Input, Textarea } from '@theme-ui/components'
 import Image from 'next/image'
 import router from 'next/router'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -13,32 +13,37 @@ type Inputs = {
 }
 
 export default function Edit({ blog }: { blog: Blog }) {
-    const [image, setImage] = useState<{ [k: string]: string | null }>({
-        path: null,
+    const [image, setImage] = useState<{
+        path: string | undefined
+        file: string | File | null
+    }>({
+        path: undefined,
         file: null,
     })
 
     const previewImage = (e: ChangeEvent<HTMLInputElement>) => {
         const reader = new FileReader()
         reader.onload = () => {
-            if (reader.readyState === 2 && typeof reader.result === 'string') {
+            if (reader.readyState === 2) {
                 console.log('done')
-                // setImage(reader.result)
-                // @ts-expect-error
-                setImage((prev) => ({ ...prev, path: reader.result }))
+                setImage((prev) => ({
+                    ...prev,
+                    path: reader.result?.toString(),
+                }))
             }
         }
-        if (e.target.files && e.target.files[0]) {
+        if (e.target.files?.[0] !== undefined) {
             reader.readAsDataURL(e.target.files[0])
-            // @ts-expect-error
-            setImage((prev) => ({ ...prev, file: e.target.files[0] }))
+            const imageFile = e.target.files[0]
+            console.log(imageFile)
+            setImage((prev) => ({ ...prev, file: imageFile }))
+            // setImage({ ...image, file: imageFile })
         }
     }
 
-    const uploadImage = async (
-        e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-    ) => {
-        e.preventDefault()
+    const uploadImage = async () => {
+        // e?: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+        // if (e) e.preventDefault()
         if (!image.file) return
         console.log('clicked')
 
@@ -69,6 +74,8 @@ export default function Edit({ blog }: { blog: Blog }) {
     })
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        console.log(data)
+
         const res = await fetch(
             ` ${process.env.NEXT_PUBLIC_API_URL}/blogs/${blog.id}`,
             {
@@ -79,6 +86,7 @@ export default function Edit({ blog }: { blog: Blog }) {
                 body: JSON.stringify(data),
             },
         )
+        await uploadImage()
         if (!res.ok) {
             console.log(res)
         } else {
@@ -88,11 +96,7 @@ export default function Edit({ blog }: { blog: Blog }) {
     }
 
     return (
-        <Box
-            as="form"
-            // sx={{ }}
-            onSubmit={handleSubmit(onSubmit)}
-        >
+        <Box as="form" onSubmit={handleSubmit(onSubmit)}>
             <Input
                 placeholder="Edit..."
                 sx={{
@@ -114,58 +118,61 @@ export default function Edit({ blog }: { blog: Blog }) {
             />
             <Textarea
                 placeholder="content..."
+                rows={20}
                 sx={{
                     mb: 4,
                     fontWeight: 'bold',
                 }}
                 {...register('content')}
             />
-            {blog.image?.formats?.medium || image.path ? (
-                <Image
-                    src={
-                        image.path
-                            ? image.path
-                            : blog.image?.formats.medium
-                            ? blog.image?.formats.medium.url
-                            : blog.image!.formats.small.url
-                    }
-                    alt={blog.image ? blog.image.name : 'No image'}
-                    width={250}
-                    height={250}
-                />
-            ) : (
-                <Heading as="h3">No image to show</Heading>
-            )}
+
             <Input
                 {...register('image')}
                 onChange={previewImage}
-                sx={
-                    {
-                        // position: 'absolute',
-                        // opacity: 0,
-                        // zIndex: -1,
-                    }
-                }
+                sx={{
+                    display: 'none',
+                }}
                 type="file"
                 name="image"
                 id="image"
             />
-            <Button onClick={uploadImage}>Upload Image</Button>
-            {/* <Label
+            <Label
                 htmlFor="image"
                 sx={{
                     justifyContent: 'center',
                     alignItems: 'center',
                     border: '2px solid gray',
                     borderRadius: 12,
-                    height: '8rem',
+                    height: '4rem',
                     mb: 4,
                     cursor: 'pointer',
                     img: {
                         borderRadius: '50%',
                     },
                 }}
-            ></Label> */}
+            >
+                Choose Image
+            </Label>
+            <Box sx={{ textAlign: 'center' }}>
+                {blog.image?.formats?.small || image.path ? (
+                    <Image
+                        src={
+                            image.path
+                                ? image.path
+                                : blog.image?.formats.medium
+                                ? blog.image?.formats.medium.url
+                                : blog.image!.formats.small.url
+                        }
+                        alt={blog.image ? blog.image.name : 'No image'}
+                        width={250}
+                        height={250}
+                    />
+                ) : (
+                    <Heading as="h3" sx={{ pb: 4 }}>
+                        No image to show
+                    </Heading>
+                )}
+            </Box>
         </Box>
     )
 }
